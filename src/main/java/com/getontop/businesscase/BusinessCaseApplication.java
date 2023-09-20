@@ -1,8 +1,10 @@
-package com.getontop.businessCase;
+package com.getontop.businesscase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
+@EnableFeignClients(basePackages = {"com.getontop.businesscase.application.port.out.proxy"})
 @SpringBootApplication
 public class BusinessCaseApplication {
 

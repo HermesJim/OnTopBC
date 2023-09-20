@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "ec732e3f-dd6f-43d4-9771-0478a6215e1a",
+		"name": "BusinessCase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1770805"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/api/v1/payments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"source\": {\r\n        \"type\": \"COMPANY\",\r\n        \"sourceInformation\": {\r\n            \"name\": \"ONTOP INC\"\r\n        },\r\n        \"account\": {\r\n            \"accountNumber\": \"0245253419\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"028444018\"\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"name\": \"TONY STARK\",\r\n        \"account\": {\r\n            \"accountNumber\": \"1885226711\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"211927207\"\r\n        }\r\n    },\r\n    \"amount\": -5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404 - Account Not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": {\r\n        \"type\": \"COMPANY\",\r\n        \"sourceInformation\": {\r\n            \"name\": \"ONTOP INC\"\r\n        },\r\n        \"account\": {\r\n            \"accountNumber\": \"1\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"028444018\"\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"name\": \"TONY STARK\",\r\n        \"account\": {\r\n            \"accountNumber\": \"2\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"211927207\"\r\n        }\r\n    },\r\n    \"amount\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": {\r\n        \"type\": \"COMPANY\",\r\n        \"sourceInformation\": {\r\n            \"name\": \"ONTOP INC\"\r\n        },\r\n        \"account\": {\r\n            \"accountNumber\": \"0245253419\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"028444018\"\r\n        }        \r\n    },\r\n    \"destination\": {\r\n        \"name\": \"TONY STARK\",\r\n        \"account\": {\r\n            \"accountNumber\": \"1885226711\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"211927207\"\r\n        }\r\n    },\r\n    \"amount\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "409 - Insuficient founds",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": {\r\n        \"type\": \"COMPANY\",\r\n        \"sourceInformation\": {\r\n            \"name\": \"ONTOP INC\"\r\n        },\r\n        \"account\": {\r\n            \"accountNumber\": \"1885226711\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"211927207\"  \r\n            \r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"name\": \"TONY STARK\",\r\n        \"account\": {\r\n            \"accountNumber\": \"0245253419\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"028444018\"\r\n        }\r\n    },\r\n    \"amount\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "500- Transferring money exceeded",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": {\r\n        \"type\": \"COMPANY\",\r\n        \"sourceInformation\": {\r\n            \"name\": \"ONTOP INC\"\r\n        },\r\n        \"account\": {\r\n            \"accountNumber\": \"0245253419\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"028444018\"\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"name\": \"TONY STARK\",\r\n        \"account\": {\r\n            \"accountNumber\": \"1885226711\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"211927207\"\r\n        }\r\n    },\r\n    \"amount\": 1000000000000000000000000000000000000000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "500 - Positive amount",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": {\r\n        \"type\": \"COMPANY\",\r\n        \"sourceInformation\": {\r\n            \"name\": \"ONTOP INC\"\r\n        },\r\n        \"account\": {\r\n            \"accountNumber\": \"1885226711\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"028444018\"\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"name\": \"TONY STARK\",\r\n        \"account\": {\r\n            \"accountNumber\": \"0245253419\",\r\n            \"currency\": \"USD\",\r\n            \"routingNumber\": \"211927207\"\r\n        }\r\n    },\r\n    \"amount\": -5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
